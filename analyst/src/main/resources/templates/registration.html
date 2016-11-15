@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+ <title>Analyser</title>
+    <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/lib/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="/lib/jquery/1.12.2/jquery.min.js" />
+    <script src="/lib/bootstrap/3.3.6/js/bootstrap.min.js"/>
+</head>
+<body>
+	<div class="container">
+		<h2>Horizontal form</h2>
+
+
+		<form th:action='@{/registration}' th:object="${userForm}"
+			class='form-signin' method='post'>
+			<h2 class="form-signin-heading">Register</h2>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for='inputUsername'>Username*</label>
+					<div class="col-sm-10">
+				 <input class="form-control" type='text'
+					name='username' id='inputUsername' th:object="${userForm.username}"
+					 placeholder="Username" required="required"
+					autofocus="autofocus" />
+			</div>
+	</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for='inputPassword'>Password</label>
+				 <div class="col-sm-10">
+				 <input class="form-control"
+					type='password' name="password" id="inputPassword"
+					th:object="${userForm.password}"
+					placeholder="Password" required="required" />
+			</div>	</div>
+			<div class="form-group">
+
+				<label class="control-label col-sm-2" for='confirmPassword'>Confirm
+					Password</label> 
+					 <div class="col-sm-10">
+					<input class="form-control" type='password' name='confirmPassword'
+					id='confirmPassword' th:object="${userForm.passwordConfirm}"
+					placeholder="Confirm password"
+					required="required" /></div>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+		</form>
+
+	</div>
+
+</body>
+</html>
