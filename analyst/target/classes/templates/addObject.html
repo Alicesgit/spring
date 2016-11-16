@@ -1,93 +1,76 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<script src="/static/js/jquery-1.12.2.min.js" />
-<script src="/static/js/bootstrap.js" />
-<link rel="stylesheet"
-	href="/static/css/bootstrap.min.css" />
-	<title th:text="#{msgs.headers.title_0}">Analyser</title>
-</head>
-<body>
-<div class="container">
-<h2>You can add object here</h2>
-	<form th:action="@{/analyst/addObject/}" th:object="${analysis}" method="post" enctype="multipart/form-data"
-		class="form-horizontal">
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_intValue}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{intValue}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue1}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue1}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue2}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue2}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue3}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue3}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue4}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue4}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue5}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue5}" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue6}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-4">
-				<textarea class="form-control" rows="3" th:field="*{stringValue6}"></textarea>
-			</div>
-		</div>
-		<div class="form-group">
-			<label th:text="#{msgs.headers.title_stringValue7}"
-				class="col-sm-2 control-label"></label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" th:field="*{stringValue7}" />
-			</div>
-		</div>
-		<div class="form-group">
-	   <label class="col-sm-2 control-label">File</label>
-	  <div class="col-sm-2">
-	   <input type="file" id="image" name="image" size="10"/>
-		</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default"
-					th:text="#{msgs.submit}">Submit</button>
-				<button type="reset" class="btn btn-default" th:text="#{msgs.reset}">Reset</button>
-			</div>
-		</div>
-	</form>
-</div>
-
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Responsive Header Demo
+    </title>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <h1>
+          Header Demo
+        </h1>
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Services</a>
+            </li>
+            <li>
+              <a href="#">History</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="content">
+      <div class="container">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex
+          ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu
+          fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Nulla efficitur pharetra leo. In convallis lobortis
+          nisl, ut pretium purus aliquam eget. Maecenas
+          vestibulum venenatis eros, a volutpat mi malesuada eu.
+          Cum sociis natoque penatibus et magnis dis parturient
+          montes, nascetur ridiculus mus. Nam mollis vitae eros
+          quis congue. Ut eget massa semper, cursus ligula et,
+          euismod lacus. Sed neque metus, tristique eget
+          scelerisque vitae, luctus at metus. Proin vel
+          ullamcorper arcu. Praesent dapibus eleifend turpis et
+          euismod. Sed tincidunt lobortis erat, nec elementum
+          libero molestie sed. Phasellus eget tristique lorem.
+        </p>
+        <p>
+          Maecenas dictum molestie nisi, eu ornare mauris posuere
+          a. Proin tempus est ligula, ut varius risus faucibus
+          nec. Morbi ultrices leo et vulputate facilisis. Nunc
+          congue, leo a facilisis dictum, metus neque tempus
+          arcu, ac aliquet nulla mi a felis. Maecenas quis
+          euismod velit. Curabitur dapibus ipsum vitae
+          ullamcorper auctor. Nullam nec ultricies urna.
+          Curabitur lacinia nec ipsum a condimentum. Quisque
+          lacinia faucibus augue, sed efficitur enim mollis eget.
+          In et metus non ante interdum varius nec in sem.
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
