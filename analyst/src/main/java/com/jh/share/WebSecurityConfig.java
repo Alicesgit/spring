@@ -26,11 +26,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests().antMatchers("/analyst/overview/index").permitAll() 
+ 
+    	http.authorizeRequests().antMatchers("/analyst/overview/index").permitAll() 
                 .antMatchers("/registration").permitAll() 
-              
-                    .anyRequest().authenticated()
+              .anyRequest().authenticated()
                     .and()
            
                 .formLogin()
@@ -52,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/*");
+        web.ignoring().antMatchers("/static/**");
     }
     
 }
