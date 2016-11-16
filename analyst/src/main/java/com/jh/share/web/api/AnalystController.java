@@ -1,11 +1,14 @@
 package com.jh.share.web.api;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,11 +18,13 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.jh.share.model.Analysis;
@@ -27,7 +32,11 @@ import com.jh.share.service.AnalysisService;
 
 @Controller
 public class AnalystController {
-    @Autowired
+	
+	 // http://www.studytrails.com/frameworks/spring/spring-mvc-file-upload/
+	private static String UPLOAD_LOCATION = "C:/opt/files/";
+	
+	@Autowired
     private AnalysisService analysisService;
     
     String fileID= "";
@@ -86,14 +95,53 @@ public class AnalystController {
 
     @RequestMapping(value = "/analyst/addObject",
             method = RequestMethod.POST)
-    public String  addObjectPost(@ModelAttribute Analysis analysis,HttpServletRequest request) {
-    	if(fileID!=null&&!fileID.equals("")){
-    	analysis.setFileId(fileID);}
+    public String  addObjectPost(@ModelAttribute Analysis analysis,@RequestParam(value = "image", required = false) MultipartFile image,HttpServletRequest request) throws IOException {
+    	 UUID fileid=UUID.randomUUID();
+    	
+    	if (!image.isEmpty()) {
+    		try {
+    		    validateImage(image);
+    		} catch (RuntimeException re) {
+    		    return "redirect:/person?new";
+    		}
+    		 System.out.println("analysis is +"+analysis.getIntValue());
+    		  
+    		
+    		 
+    		 saveImage(fileid + ".jpg", image);
+    		}
+    	
+    	
+    	//if(fileID!=null&&!fileID.equals("")){
+    	analysis.setFileId(fileid.toString());
+    	
     	Analysis savedAnalysis = analysisService.create(analysis);
         // return模板文件的名称，对应src/main/resources/templates/index.html
     	//return index(map);
     	return "redirect:/";
-    } 
+    }
+
+	private void saveImage(String filename, MultipartFile image) throws IOException {
+		try {
+			File file = new File(UPLOAD_LOCATION 
+			+ filename);
+			FileCopyUtils.copy( image.getBytes(),file);
+			
+			System.out.println("Go to the location:  " + file.toString()
+			+ " on your computer and verify that the image has been stored.");
+			} catch (IOException e) {
+			throw e;
+			}
+			}
+		
+	
+
+	private void validateImage(MultipartFile image) {
+		if (!image.getContentType().equals("image/jpeg")) {
+			throw new RuntimeException("Only JPG images are accepted");
+			}
+		
+	} 
     
    
 }

@@ -37,7 +37,7 @@
  <p th:text="'Hello, ' + ${name} + '!'" />
 <div class="container">
 <h2>You can add object here</h2>
-	<form th:action="@{/analyst/addObject/}" th:object="${analysis}" method="post"
+	<form th:action="@{/analyst/addObject/}" th:object="${analysis}" method="post" enctype="multipart/form-data"
 		class="form-horizontal">
 		<div class="form-group">
 			<label th:text="#{msgs.headers.title_intValue}"
@@ -95,6 +95,8 @@
 				<input type="text" class="form-control" th:field="*{stringValue7}" />
 			</div>
 		</div>
+	   <span>File</span>
+		<input type="file" id="image" name="image" size="10"/>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-default"
@@ -105,8 +107,7 @@
 		
 	</form>
 	<span>File</span>
-<input type="file" id="file" name="file" size="10"/>
-<input id="uploadbutton" type="button" value="Upload"/>
+
 	</div>
 	<div><a th:href="@{/file}"> add a picture here</a></div>
 </body>
