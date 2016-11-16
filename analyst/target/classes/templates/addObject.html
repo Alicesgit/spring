@@ -2,7 +2,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head lang="en">
+<head>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,29 +12,8 @@
 <link rel="stylesheet"
 	href="/static/css/bootstrap.min.css" />
 	<title th:text="#{msgs.headers.title_0}">Analyser</title>
-	<script type="text/javascript">
-	$(document).ready(function () {
-	    $("#uploadbutton").click(function () {
-	        var filename = $("#file").val();
-
-	        $.ajax({
-	            type: "POST",
-	            url: "/upload",
-	            enctype: 'multipart/form-data',
-	            data: {
-	                file: filename
-	            },
-	            success: function () {
-	                alert("Data Uploaded: ");
-	            }
-	        });
-	    });
-	});
-    </script>
 </head>
-
 <body>
- <p th:text="'Hello, ' + ${name} + '!'" />
 <div class="container">
 <h2>You can add object here</h2>
 	<form th:action="@{/analyst/addObject/}" th:object="${analysis}" method="post" enctype="multipart/form-data"
@@ -95,8 +74,12 @@
 				<input type="text" class="form-control" th:field="*{stringValue7}" />
 			</div>
 		</div>
-	   <span>File</span>
-		<input type="file" id="image" name="image" size="10"/>
+		<div class="form-group">
+	   <label class="col-sm-2 control-label">File</label>
+	  <div class="col-sm-2">
+	   <input type="file" id="image" name="image" size="10"/>
+		</div>
+		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-default"
@@ -107,8 +90,7 @@
 		
 	</form>
 	<span>File</span>
-
 	</div>
-	<div><a th:href="@{/file}"> add a picture here</a></div>
+
 </body>
 </html>
