@@ -34,11 +34,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
            
                 .formLogin()
                     .loginPage("/login")
+                    .defaultSuccessUrl("/analyst/addObject")
                     .permitAll()
-                  
+                    .and()
+                    .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/")
                     .and()
                     .exceptionHandling()
-                    
                     .and()
                     .csrf()//Disabled CSRF protection
                     .disable();
