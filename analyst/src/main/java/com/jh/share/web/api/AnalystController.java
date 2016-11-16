@@ -97,6 +97,8 @@ public class AnalystController {
             method = RequestMethod.POST)
     public String  addObjectPost(@ModelAttribute Analysis analysis,@RequestParam(value = "image", required = false) MultipartFile image,HttpServletRequest request) throws IOException {
     	 UUID fileid=UUID.randomUUID();
+    	 String filename=fileid+image.getOriginalFilename();
+    	 System.out.println("original file name is: "+filename);
     	
     	if (!image.isEmpty()) {
     		try {
@@ -105,15 +107,14 @@ public class AnalystController {
     		    return "redirect:/person?new";
     		}
     		 System.out.println("analysis is +"+analysis.getIntValue());
-    		  
-    		
-    		 
     		 saveImage(fileid + ".jpg", image);
     		}
     	
     	
     	//if(fileID!=null&&!fileID.equals("")){
     	analysis.setFileId(fileid.toString());
+    	analysis.setImagePath(fileid.toString()+".jpg");
+    	System.out.println(fileid.toString()+".jpg");
     	
     	Analysis savedAnalysis = analysisService.create(analysis);
         // return模板文件的名称，对应src/main/resources/templates/index.html
