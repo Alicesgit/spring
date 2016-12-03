@@ -41,6 +41,8 @@ public class AnalysisServiceBean implements AnalysisService {
         Analysis analysis = analysisRepository.findOne(id);
 		return analysis;
 	}
+	
+	
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
@@ -95,5 +97,11 @@ public class AnalysisServiceBean implements AnalysisService {
 	public Page<Analysis> findAll(Pageable pageable) {
 		Page<Analysis> analysiss = analysisRepository.findAll(pageable);
 		return analysiss;
+	}
+
+	@Override
+	public Analysis fineByFileId(String fileid) {
+		Analysis analysis=analysisRepository.findByFileId(fileid);
+		return analysis;
 	}
 }

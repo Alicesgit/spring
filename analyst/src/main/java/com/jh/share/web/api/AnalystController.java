@@ -36,10 +36,11 @@ public class AnalystController {
 	 // http://www.studytrails.com/frameworks/spring/spring-mvc-file-upload/
 	private static String UPLOAD_LOCATION = "C:/opt/files/";
 	
+	
 	@Autowired
     private AnalysisService analysisService;
     
-    String fileID= "";
+    static String fileID= UUID.randomUUID().toString();
 
     @RequestMapping(value = {"/analyst/overview/index"},
             method = RequestMethod.GET)
@@ -84,22 +85,27 @@ public class AnalystController {
             method = RequestMethod.GET)
     public String addObject(Model model,HttpServletRequest request) {
     	Analysis analysis = new Analysis();
-    	Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-    	  if (inputFlashMap != null) {
-    	    fileID = inputFlashMap.get("fileID").toString();
-    	  }
+    	
+    	
+    	
+    	analysis.setFileId(fileID);
+    	Analysis savedAnalysis = analysisService.create(analysis);
+    	
     	model.addAttribute("analysis", analysis);
+    	
         // return模板文件的名称，对应src/main/resources/templates/login.html
-        return "addObject";  
+        
+        return "/addObject";
     }
 
-    @RequestMapping(value = "/analyst/addObject",
-            method = RequestMethod.POST)
-    public String  addObjectPost(@ModelAttribute Analysis analysis,@RequestParam(value = "image", required = false) MultipartFile image,HttpServletRequest request) throws IOException {
-    	 UUID fileid=UUID.randomUUID();
-    	 String filename=fileid+image.getOriginalFilename();
-    	 System.out.println("original file name is: "+filename);
+    @RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
+    public String  addObjectPost(@ModelAttribute Analysis analysis, MultipartFile image,HttpServletRequest request) throws IOException {
+    	// UUID fileid=UUID.randomUUID();
     	
+    	 String filename=fileID+image.getOriginalFilename();
+    	 System.out.println("analysis.getFileId: "+analysis.getFileId());
+    	
+    	 System.out.println("original file name is: "+filename);
     	if (!image.isEmpty()) {
     		try {
     		    validateImage(image);
@@ -107,19 +113,18 @@ public class AnalystController {
     		    return "redirect:/person?new";
     		}
     		 System.out.println("analysis is +"+analysis.getIntValue());
-    		 saveImage(fileid + ".jpg", image);
+    		 saveImage(fileID + ".jpg", image);
     		}
-    	
-    	
     	//if(fileID!=null&&!fileID.equals("")){
-    	analysis.setFileId(fileid.toString());
-    	analysis.setImagePath(fileid.toString()+".jpg");
-    	System.out.println(fileid.toString()+".jpg");
+    	//analysis.setFileId(fileid.toString());
+    	analysis.setImagePath(fileID+".jpg");
+    	System.out.println(fileID+".jpg");
+    
     	
-    	Analysis savedAnalysis = analysisService.create(analysis);
+    	Analysis savedAnalysis = analysisService.update(analysis);
         // return模板文件的名称，对应src/main/resources/templates/index.html
     	//return index(map);
-    	return "redirect:/";
+    	return "analyst/addObject";
     }
 
 	private void saveImage(String filename, MultipartFile image) throws IOException {

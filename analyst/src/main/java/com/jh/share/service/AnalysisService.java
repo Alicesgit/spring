@@ -13,6 +13,7 @@ public interface AnalysisService {
     Page<Analysis> findAll(Pageable pageable);
 
     Analysis findOne(Long id);
+    Analysis fineByFileId(String fileId);
 
     Analysis create(Analysis analysis);
 

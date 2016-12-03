@@ -8,4 +8,6 @@ import com.jh.share.model.Analysis;
 @Repository
 public interface AnalysisRepository extends JpaRepository<Analysis, Long> {
 
+	Analysis findByFileId(String fileid);
+
 }
