@@ -40,12 +40,32 @@ a:hover, a:active {
 
   <thead>
     <tr>
-     
+     <td >Image</td>
+      <td th:text="#{msgs.headers.title_intValue}">Grade</td>
+      <td th:text="#{msgs.headers.title_stringValue1}">ShareName</td>
+      <td th:text="#{msgs.headers.title_stringValue2}">Analysis Source</td>
+      <td th:text="#{msgs.headers.title_stringValue3}">Current Price</td>
+   
+      <td th:text="#{msgs.headers.title_stringValue5}">Release Date</td>
+    
      
     </tr>
   </thead>
   <tbody>
-   
+  
+     <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="120" height="120"/>
+          <a th:href="@{/analysis/details(fid=${analysis.fileId})}">Details</a>
+         
+  </td>
+      <td th:text="${analysis.intValue}"></td>
+      <td th:text="${analysis.stringValue1}"></td>
+      <td th:text="${analysis.stringValue2}"></td>
+      <td th:text="${analysis.stringValue3}"></td>
+  
+      <td th:text="${analysis.stringValue5}"></td>
+    
+      
+ 
   </tbody>
 </table>  
 </div>

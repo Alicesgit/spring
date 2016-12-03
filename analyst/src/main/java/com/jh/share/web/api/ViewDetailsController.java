@@ -18,10 +18,13 @@ public class ViewDetailsController {
 	@Autowired
     private AnalysisService analysisService;
 	
-	 @RequestMapping(value = "analysis/details",
+	 @RequestMapping(value = "/analysis/details",
 	            method = RequestMethod.GET)
-	    public String addObject( @RequestParam(value = "fid")String fid, ModelMap map) {
+	    public String addObject( @RequestParam(value = "fid")String fid, Model model) {
 	    	
+	    	Analysis currentAnalysis = analysisService.fineByFileId(fid);
+	    	
+	    	model.addAttribute("analysis", currentAnalysis);
 	    	
 	        // return模板文件的名称，对应src/main/resources/templates/login.html
 	        

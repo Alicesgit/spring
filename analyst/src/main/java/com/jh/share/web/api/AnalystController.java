@@ -85,9 +85,6 @@ public class AnalystController {
             method = RequestMethod.GET)
     public String addObject(Model model,HttpServletRequest request) {
     	Analysis analysis = new Analysis();
-    	
-    	
-    	
     	analysis.setFileId(fileID);
     	Analysis savedAnalysis = analysisService.create(analysis);
     	
