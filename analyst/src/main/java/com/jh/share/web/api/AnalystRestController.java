@@ -26,11 +26,9 @@ public class AnalystRestController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public String getEntryPage() {
-
-       
-
         return "templates/welcome";
     }
+   
     @RequestMapping(
             value = "/api/analyses",
             method = RequestMethod.GET,

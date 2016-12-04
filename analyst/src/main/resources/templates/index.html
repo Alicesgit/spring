@@ -24,17 +24,32 @@ a:hover, a:active {
     background-color: blue;
 }
 </style>
+
+
+
    
 </head>
 <body>  
 
+
+<div class="container">
+
+<h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
+<div id="header-login" style="padding-top:2px;border-style: solid solid solid solid;" class="row">
 <div>
 <a th:href="@{/login}"> Login</a>
 <a th:href="@{/registration}"> Registration</a>
 </div>
-<div class="container">
 
-<h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
+</div>
+<div id="header-sorting" style="padding-top:2px;border-style: solid solid solid solid;" class="row">
+<a th:href="@{/sortingByPrice}"> cheapest</a>
+<a th:href="@{/sortingByDate}"> newest</a>
+</div>
+
+
+
+<div class="row">
 <div class="table-responsive">   
 <table class="table table-hover">  
 
@@ -68,6 +83,7 @@ a:hover, a:active {
     </tr>
   </tbody>
 </table>  
+</div>
 </div>
 </div>
 </body>  

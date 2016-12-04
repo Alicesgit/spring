@@ -15,6 +15,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -50,7 +52,18 @@ public class AnalystController {
         map.addAttribute("analysiss", analysiss);
         // return模板文件的名称，对应src/main/resources/templates/index.html
         return "index";  
-    }
+    } 
+    
+    @RequestMapping(value="/sortingByPrice")
+	  public String sortByPrice(ModelMap map) {
+		 Collection<Analysis> analysiss = analysisService.findAllByOrderByStringValue3Asc();
+
+		 map.addAttribute("analysiss", analysiss);
+	        // return模板文件的名称，对应src/main/resources/templates/index.html
+	        return "index";  
+		 
+	    }
+	 
 
     @RequestMapping(value = "/pages", method=RequestMethod.GET)
     public String getAnalysisPage(@RequestParam(value = "page", defaultValue = "0") Integer page,

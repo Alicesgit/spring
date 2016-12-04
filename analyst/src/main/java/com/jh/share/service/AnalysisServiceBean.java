@@ -104,4 +104,11 @@ public class AnalysisServiceBean implements AnalysisService {
 		Analysis analysis=analysisRepository.findByFileId(fileid);
 		return analysis;
 	}
+
+	@Override
+	public Collection<Analysis> findAllByOrderByStringValue3Asc() {
+		Collection<Analysis> analysiss = analysisRepository.findAllByOrderByStringValue3Asc();
+		return analysiss;
+	
+	}
 }
