@@ -56,7 +56,7 @@ public class AnalystController {
     
     @RequestMapping(value="/sortingByPrice")
 	  public String sortByPrice(ModelMap map) {
-		 Collection<Analysis> analysiss = analysisService.findAllByOrderByStringValue3Asc();
+		 Collection<Analysis> analysiss = analysisService.findAllByOrderByCurrentPriceAsc();
 
 		 map.addAttribute("analysiss", analysiss);
 	        // return模板文件的名称，对应src/main/resources/templates/index.html

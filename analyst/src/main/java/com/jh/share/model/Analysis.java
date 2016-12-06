@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Analysis implements Comparable {
+public class Analysis {
 	@Id
 	@GeneratedValue
 	@Column(name = "analysis_id")
@@ -17,6 +17,9 @@ public class Analysis implements Comparable {
 	
 	@Column(name="file_id")
 	private String fileId;
+	
+	@Column(name="currentPrice")
+	private int currentPrice;
 	
 	private int intValue;
 
@@ -128,10 +131,13 @@ public class Analysis implements Comparable {
 		this.imagePath = imagePath;
 	}
 
-	@Override
-	public int compareTo(Object o) {
-		
-		return 0;
+
+	public int getCurrentPrice() {
+		return currentPrice;
+	}
+
+	public void setCurrentPrice(int currentPrice) {
+		this.currentPrice =currentPrice;
 	}
 	
 	

@@ -9,7 +9,7 @@ import com.jh.share.model.Analysis;
 
 public interface AnalysisService {
     Collection<Analysis> findAll();
-    Collection<Analysis> findAllByOrderByStringValue3Asc();
+    Collection<Analysis> findAllByOrderByCurrentPriceAsc();
 
     Page<Analysis> findAll(Pageable pageable);
 

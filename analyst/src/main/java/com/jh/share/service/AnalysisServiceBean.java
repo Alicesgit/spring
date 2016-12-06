@@ -106,8 +106,8 @@ public class AnalysisServiceBean implements AnalysisService {
 	}
 
 	@Override
-	public Collection<Analysis> findAllByOrderByStringValue3Asc() {
-		Collection<Analysis> analysiss = analysisRepository.findAllByOrderByStringValue3Asc();
+	public Collection<Analysis> findAllByOrderByCurrentPriceAsc() {
+		Collection<Analysis> analysiss = analysisRepository.findAllByOrderByCurrentPriceAsc();
 		return analysiss;
 	
 	}

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jh.share.model.Analysis;
-import com.jh.share.model.AnalysisList;
 import com.jh.share.service.AnalysisService;
 
 @RestController
@@ -21,7 +20,7 @@ public class AnalystSortingRestController {
 	 
 	 @RequestMapping(value="/sortingByPrice", produces = "application/json")
 	  public ResponseEntity<Collection<Analysis>> sortByPrice() {
-		 Collection<Analysis> analysiss = analysisService.findAllByOrderByStringValue3Asc();
+		 Collection<Analysis> analysiss = analysisService.findAllByOrderByCurrentPriceAsc();
 
 	        return new ResponseEntity<Collection<Analysis>>(analysiss, HttpStatus.OK);
 		 
