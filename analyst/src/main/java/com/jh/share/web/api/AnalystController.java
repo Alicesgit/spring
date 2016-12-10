@@ -3,6 +3,7 @@ package com.jh.share.web.api;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
@@ -34,130 +35,140 @@ import com.jh.share.service.AnalysisService;
 
 @Controller
 public class AnalystController {
-	
-	 // http://www.studytrails.com/frameworks/spring/spring-mvc-file-upload/
+
+	// http://www.studytrails.com/frameworks/spring/spring-mvc-file-upload/
 	private static String UPLOAD_LOCATION = "C:/opt/files/";
-	
-	
+
 	@Autowired
-    private AnalysisService analysisService;
-    
-    static String fileID= UUID.randomUUID().toString();
+	private AnalysisService analysisService;
 
-    @RequestMapping(value = {"/analyst/overview/index"},
-            method = RequestMethod.GET)
-    public String index(ModelMap map) {
-        Collection<Analysis> analysiss = analysisService.findAll();
-         // 加入一个属性，用来在模板中读取
-        map.addAttribute("analysiss", analysiss);
-        // return模板文件的名称，对应src/main/resources/templates/index.html
-        return "index";  
-    } 
-    
-    @RequestMapping(value="/sortingByPrice")
-	  public String sortByPrice(ModelMap map) {
-		 Collection<Analysis> analysiss = analysisService.findAllByOrderByCurrentPriceAsc();
+	@RequestMapping(value = { "/analyst/overview/index" }, method = RequestMethod.GET)
+	public String index(ModelMap map) {
+		Collection<Analysis> analysiss = analysisService.findAll();
+		// 加入一个属性，用来在模板中读取
+		map.addAttribute("analysiss", analysiss);
+		// return模板文件的名称，对应src/main/resources/templates/index.html
+		return "index";
+	}
 
-		 map.addAttribute("analysiss", analysiss);
-	        // return模板文件的名称，对应src/main/resources/templates/index.html
-	        return "index";  
-		 
-	    }
-	 
+	@RequestMapping(value = "/sortingByPrice")
+	public String sortByPrice(ModelMap map) {
+		Collection<Analysis> analysiss = analysisService.findAllByOrderByCurrentPriceAsc();
 
-    @RequestMapping(value = "/pages", method=RequestMethod.GET)
-    public String getAnalysisPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "size", defaultValue = "5") Integer size, ModelMap map) {
-        Sort sort = new Sort(Direction.DESC, "Id");
-        Pageable pageable = new PageRequest(page, size, sort);
-    	Page<Analysis> resultPage = analysisService.findAll(pageable);
+		map.addAttribute("analysiss", analysiss);
+		// return模板文件的名称，对应src/main/resources/templates/index.html
+		return "index";
 
-    	// 加入一个属性，用来在模板中读取
-        int current = resultPage.getNumber() + 1;
-        int begin = Math.max(1, current - 2);
-        int end = Math.min(begin + 4, resultPage.getTotalPages());
+	}
 
-        int[] range = getRange(begin, end);
+	@RequestMapping(value = "/pages", method = RequestMethod.GET)
+	public String getAnalysisPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "5") Integer size, ModelMap map) {
+		Sort sort = new Sort(Direction.DESC, "Id");
+		Pageable pageable = new PageRequest(page, size, sort);
+		Page<Analysis> resultPage = analysisService.findAll(pageable);
+
+		// 加入一个属性，用来在模板中读取
+		int current = resultPage.getNumber() + 1;
+		int begin = Math.max(1, current - 2);
+		int end = Math.min(begin + 4, resultPage.getTotalPages());
+
+		int[] range = getRange(begin, end);
 		map.addAttribute("range", range);
 		map.addAttribute("currentIndex", current);
 		map.addAttribute("analysiss", resultPage);
 		// return模板文件的名称，对应src/main/resources/templates/index.html
-        return "indexByPage";  
-    }
+		return "indexByPage";
+	}
 
-    private int[] getRange(int begin, int end) {
-    	int[] range = new int[end-begin+1];
-    	int j=0;
-    	for (int i= begin; i<= end; i++) {
-    		range[j++] = i;
-    	}
-    	return range;
-    }
-    
-    @RequestMapping(value = "/analyst/addObject",
-            method = RequestMethod.GET)
-    public String addObject(Model model,HttpServletRequest request) {
-    	Analysis analysis = new Analysis();
-    	analysis.setFileId(fileID);
-    	Analysis savedAnalysis = analysisService.create(analysis);
-    	
-    	model.addAttribute("analysis", analysis);
-    	
-        // return模板文件的名称，对应src/main/resources/templates/login.html
-        
-        return "/addObject";
-    }
+	private int[] getRange(int begin, int end) {
+		int[] range = new int[end - begin + 1];
+		int j = 0;
+		for (int i = begin; i <= end; i++) {
+			range[j++] = i;
+		}
+		return range;
+	}
 
-    @RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
-    public String  addObjectPost(@ModelAttribute Analysis analysis, MultipartFile image,HttpServletRequest request) throws IOException {
-    	// UUID fileid=UUID.randomUUID();
-    	
-    	 String filename=fileID+image.getOriginalFilename();
-    	 System.out.println("analysis.getFileId: "+analysis.getFileId());
-    	
-    	 System.out.println("original file name is: "+filename);
-    	if (!image.isEmpty()) {
-    		try {
-    		    validateImage(image);
-    		} catch (RuntimeException re) {
-    		    return "redirect:/person?new";
-    		}
-    		 System.out.println("analysis is +"+analysis.getIntValue());
-    		 saveImage(fileID + ".jpg", image);
-    		}
-    	//if(fileID!=null&&!fileID.equals("")){
-    	//analysis.setFileId(fileid.toString());
-    	analysis.setImagePath(fileID+".jpg");
-    	System.out.println(fileID+".jpg");
-    
-    	
-    	Analysis savedAnalysis = analysisService.update(analysis);
-        // return模板文件的名称，对应src/main/resources/templates/index.html
-    	//return index(map);
-    	return "analyst/addObject";
-    }
+	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.GET)
+	public String addObject(@ModelAttribute Analysis analysis, HttpServletRequest request) {
+		
+		
+		//analysis.setIntValue(0);
+		//analysis.setCurrentPrice(0);
+		
+		//Analysis savedAnalysis = analysisService.create(analysis);
+	//	Analysis savedAnalysis = null;
+		
+		
+		//request.getSession().setAttribute("analysisid", analysis.getId());
+       // System.out.println("in get id:"+analysis.getId());
+		// return模板文件的名称，对应src/main/resources/templates/login.html
+       
+		return "/addObject";
+	}
+
+	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
+	public String addObjectPost(@ModelAttribute Analysis analysis,
+			@RequestParam(value = "image", required = false) MultipartFile image, HttpServletRequest request)
+			throws IOException {
+		// UUID fileid=UUID.randomUUID();
+		// System.out.println("image path"+image.getOriginalFilename());
+		// String filename=fileID+image.getOriginalFilename();
+		String fileID = UUID.randomUUID().toString();
+		System.out.println("get method: " + fileID);
+		System.out.println("get id from post method: "+request.getSession().getAttribute("analysisid"));
+		analysis.setFileId(fileID);
+		//analysis.setId((Long)(request.getSession().getAttribute("analysisid")));
+		
+		System.out.println("post object: "+analysis.getId());
+		java.util.Date date = new Date();
+
+		System.out.println("analysis.getId: " + analysis.getId());
+		System.out.println("analysis.getCurrentPrice(): " + analysis.getCurrentPrice());
+		System.out.println("analysis.analysis.getStringValue3(): " + analysis.getStringValue3());
+		analysis.setInsertDate(date);
+		// System.out.println("original file name is: "+filename);
+		if (!image.isEmpty()) {
+			try {
+				System.out.println("image is not empty");
+				String filename = analysis.getFileId() + image.getOriginalFilename();
+				validateImage(image);
+			} catch (RuntimeException re) {
+				return "redirect:/person?new";
+			}
+			System.out.println("analysis is +" + analysis.getIntValue());
+			saveImage(analysis + ".jpg", image);
+		}
+		// if(fileID!=null&&!fileID.equals("")){
+		// analysis.setFileId(fileid.toString());
+		analysis.setImagePath(analysis + ".jpg");
+		System.out.println(analysis + ".jpg");
+
+		//Analysis savedAnalysis = analysisService.update(analysis);
+		Analysis savedAnalysis = analysisService.create(analysis);
+		// return模板文件的名称，对应src/main/resources/templates/index.html
+		// return index(map);
+		return "analyst/addObject";
+	}
 
 	private void saveImage(String filename, MultipartFile image) throws IOException {
 		try {
-			File file = new File(UPLOAD_LOCATION 
-			+ filename);
-			FileCopyUtils.copy( image.getBytes(),file);
-			
+			File file = new File(UPLOAD_LOCATION + filename);
+			FileCopyUtils.copy(image.getBytes(), file);
+
 			System.out.println("Go to the location:  " + file.toString()
-			+ " on your computer and verify that the image has been stored.");
-			} catch (IOException e) {
+					+ " on your computer and verify that the image has been stored.");
+		} catch (IOException e) {
 			throw e;
-			}
-			}
-		
-	
+		}
+	}
 
 	private void validateImage(MultipartFile image) {
 		if (!image.getContentType().equals("image/jpeg")) {
 			throw new RuntimeException("Only JPG images are accepted");
-			}
-		
-	} 
-    
-   
+		}
+
+	}
+
 }

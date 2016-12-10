@@ -41,8 +41,7 @@ public class AnalysisServiceBean implements AnalysisService {
         Analysis analysis = analysisRepository.findOne(id);
 		return analysis;
 	}
-	
-	
+
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
@@ -71,7 +70,10 @@ public class AnalysisServiceBean implements AnalysisService {
             // Cannot update Greeting that hasn't been persisted
             return null;
         }
-        Analysis updatedAnalysis = analysisRepository.save(analysis);
+        analysisToUpdate.setCurrentPrice(analysis.getCurrentPrice());
+        analysisToUpdate.setImagePath(analysis.getImagePath());
+        analysisToUpdate.setStringValue4(analysis.getStringValue4());
+        Analysis updatedAnalysis = analysisRepository.save(analysisToUpdate);
 		return updatedAnalysis;
 	}
 

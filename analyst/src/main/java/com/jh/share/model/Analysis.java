@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
 
 @Entity
 public class Analysis {
@@ -20,6 +24,9 @@ public class Analysis {
 	
 	@Column(name="currentPrice")
 	private int currentPrice;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date insertDate;
 	
 	private int intValue;
 
@@ -138,6 +145,14 @@ public class Analysis {
 
 	public void setCurrentPrice(int currentPrice) {
 		this.currentPrice =currentPrice;
+	}
+
+	public java.util.Date getInsertDate() {
+		return insertDate;
+	}
+
+	public void setInsertDate(java.util.Date insertDate) {
+		this.insertDate = insertDate;
 	}
 	
 	
