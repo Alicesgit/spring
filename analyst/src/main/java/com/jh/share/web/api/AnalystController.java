@@ -90,7 +90,7 @@ public class AnalystController {
 		return range;
 	}
 
-	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.GET)
+	@RequestMapping(value = "/addAdvertisement", method = RequestMethod.GET)
 	public String addObject(@ModelAttribute Analysis analysis, HttpServletRequest request) {
 		
 		
@@ -149,7 +149,7 @@ public class AnalystController {
 		Analysis savedAnalysis = analysisService.create(analysis);
 		// return模板文件的名称，对应src/main/resources/templates/index.html
 		// return index(map);
-		return "analyst/addObject";
+		return "/addObject";
 	}
 
 	private void saveImage(String filename, MultipartFile image) throws IOException {
