@@ -71,6 +71,29 @@ a:hover, a:active {
    
   </tbody>
 </table>  
+<table class="table table-hover">  
+
+  <thead>
+    <tr>
+     <td >Image</td>
+       <td >Image1</td>
+        <td >Image2</td>
+          <td >Image3</td>
+            <td >Image4</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+ <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="90" height="90"/> </td>
+     
+<td>  <img th:src="@{/files/}+${analysis.imagePath1}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath2}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath3}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath4}"  width="120" height="120"/> </td>
+   
+  </tbody>
+</table>  
+
 </div>
 </div>
 </body>  

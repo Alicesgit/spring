@@ -2,8 +2,10 @@ package com.jh.share.web.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -120,7 +122,7 @@ public class AnalystController {
 
 	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
 	public String addObjectPost(@ModelAttribute Analysis analysis,
-			@RequestParam(value = "image", required = false) MultipartFile image, HttpServletRequest request)
+			@RequestParam(value = "image", required = false) MultipartFile[] files, HttpServletRequest request)
 			throws IOException {
 		// UUID fileid=UUID.randomUUID();
 		// System.out.println("image path"+image.getOriginalFilename());
@@ -139,20 +141,33 @@ public class AnalystController {
 		System.out.println("analysis.analysis.getStringValue3(): " + analysis.getStringValue3());
 		analysis.setInsertDate(date);
 		// System.out.println("original file name is: "+filename);
-		if (!image.isEmpty()) {
-			try {
-				System.out.println("image is not empty");
-				String filename = analysis.getFileId() + image.getOriginalFilename();
-				validateImage(image);
-			} catch (RuntimeException re) {
-				return "redirect:/person?new";
-			}
-			System.out.println("analysis is +" + analysis.getIntValue());
-			saveImage(analysis + ".jpg", image);
+		List<String> imageNames=new ArrayList<String>() ;
+		String message = "";
+		for (int i = 0; i < files.length; i++) {
+			 MultipartFile file = files[i];
+			if (!file.isEmpty()) {
+					try {
+						System.out.println("file is not empty");
+						String filename = analysis.getFileId() + file.getOriginalFilename();
+						validateImage(file);
+						saveImage(filename, file);
+						imageNames.add(filename);
+					} catch (RuntimeException re) {
+						return "redirect:/person?new";
+					}
+					System.out.println("analysis is +" + analysis.getIntValue());
+					
+				}
 		}
+		
+		analysis.setImagePath(imageNames.get(0));
+		analysis.setImagePath1(imageNames.get(1));
+		analysis.setImagePath2(imageNames.get(2));
+		analysis.setImagePath3(imageNames.get(3));
+		analysis.setImagePath4(imageNames.get(4));
 		// if(fileID!=null&&!fileID.equals("")){
 		// analysis.setFileId(fileid.toString());
-		analysis.setImagePath(analysis + ".jpg");
+	
 		System.out.println(analysis + ".jpg");
 
 		//Analysis savedAnalysis = analysisService.update(analysis);
