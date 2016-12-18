@@ -113,4 +113,10 @@ public class AnalysisServiceBean implements AnalysisService {
 		return analysiss;
 	
 	}
+
+	@Override
+	public Collection<Analysis> findAllByOrderByInsertDateDesc() {
+		Collection<Analysis> analysiss = analysisRepository.findAllByOrderByInsertDateDesc();
+		return analysiss;
+	}
 }

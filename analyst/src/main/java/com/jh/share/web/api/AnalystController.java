@@ -60,6 +60,16 @@ public class AnalystController {
 		return "index";
 
 	}
+	
+	@RequestMapping(value = "/sortingByDate")
+	public String sortByDate(ModelMap map) {
+		Collection<Analysis> analysiss = analysisService.findAllByOrderByInsertDateDesc();
+
+		map.addAttribute("analysiss", analysiss);
+		// return模板文件的名称，对应src/main/resources/templates/index.html
+		return "index";
+
+	}
 
 	@RequestMapping(value = "/pages", method = RequestMethod.GET)
 	public String getAnalysisPage(@RequestParam(value = "page", defaultValue = "0") Integer page,

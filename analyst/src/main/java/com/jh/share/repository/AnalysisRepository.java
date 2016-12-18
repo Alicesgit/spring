@@ -13,6 +13,7 @@ public interface AnalysisRepository extends JpaRepository<Analysis, Long> {
 
 	Analysis findByFileId(String fileid);
 	Collection<Analysis> findAllByOrderByCurrentPriceAsc();
+	Collection<Analysis> findAllByOrderByInsertDateDesc();
 	List<Analysis> findAll();
 
 }

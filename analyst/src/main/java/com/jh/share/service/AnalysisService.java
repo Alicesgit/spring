@@ -23,5 +23,6 @@ public interface AnalysisService {
     void delete(Long id);
 
     void evictCache();
+	Collection<Analysis> findAllByOrderByInsertDateDesc();
 
 }

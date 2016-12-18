@@ -62,8 +62,8 @@ a:hover, a:active {
       <td th:text="#{msgs.headers.title_stringValue2}">Analysis Source</td>
       <td th:text="#{msgs.headers.title_stringValue3}">Current Price</td>
 	 <td th:text="#{msgs.headers.title_stringValue5}">ReleaseDate</td>
- <td >current price</td>
-
+ <td >Real price</td>
+ <td >InsertDate</td>
 						</tr>
   </thead>
   <tbody>
@@ -79,6 +79,7 @@ a:hover, a:active {
   
       <td th:text="${analysis.stringValue5}"></td>
         <td th:text="${analysis.currentPrice}"></td>
+          <td th:text="${analysis.insertDate}"></td>
     
       
     </tr>
