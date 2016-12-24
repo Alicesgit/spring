@@ -1,0 +1,134 @@
+<html>  
+<head>  
+    <title>Analyser</title>
+      <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+   <script src="/static/js/jquery-1.12.2.min.js" />
+<script src="/static/js/bootstrap.js" />
+<link rel="stylesheet"
+	href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+   
+    <style>
+a:link, a:visited {
+    background-color: blue;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: blue;
+}
+</style>
+  
+</head>
+<body>  
+
+<div>
+<a th:href="@{/login}"> Login</a>
+<a th:href="@{/registration}"> Registration</a>
+</div>
+<div class="container">
+
+<h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
+<div class="table-responsive">   
+<table class="table table-hover">  
+
+  <thead>
+    <tr>
+     <td >Image</td>
+      <td th:text="#{msgs.headers.title_intValue}">Grade</td>
+      <td th:text="#{msgs.headers.title_stringValue1}">ShareName</td>
+      <td th:text="#{msgs.headers.title_stringValue2}">Analysis Source</td>
+      <td th:text="#{msgs.headers.title_stringValue3}">Current Price</td>
+      <td th:text="#{msgs.headers.title_stringValue4}">Target Price</td>
+      <td th:text="#{msgs.headers.title_stringValue5}">Release Date</td>
+      <td th:text="#{msgs.headers.title_stringValue6}">Details</td>
+      <td th:text="#{msgs.headers.title_stringValue7}">Currency</td>
+      <td >Real price</td>
+       <td >Updated Date</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+ <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="90" height="90"/>
+      </td>
+      <td th:text="${analysis.intValue}"></td>
+      <td th:text="${analysis.stringValue1}"></td>
+      <td th:text="${analysis.stringValue2}"></td>
+      <td th:text="${analysis.stringValue3}"></td>
+      <td th:text="${analysis.stringValue4}"></td>
+      <td th:text="${analysis.stringValue5}"></td>
+      <td th:text="${analysis.stringValue6}"></td>
+      <td th:text="${analysis.stringValue7}"></td>
+       <td th:text="${analysis.currentPrice}"></td>
+       <td th:text="${analysis.insertDate}"></td>
+
+   
+  </tbody>
+</table>  
+
+<table class="table table-hover">  
+
+  <thead>
+    <tr>
+     <td >Image</td>
+       <td >Image1</td>
+        <td >Image2</td>
+          <td >Image3</td>
+            <td >Image4</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+ <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="90" height="90"/> </td>
+     
+<td>  <img th:src="@{/files/}+${analysis.imagePath1}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath2}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath3}"  width="120" height="120"/> </td>
+<td>  <img th:src="@{/files/}+${analysis.imagePath4}"  width="120" height="120"/> </td>
+   
+  </tbody>
+</table>  
+<h2 class="w3-center">Manual Slideshow</h2>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath}"  style="width:100%"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath1}" style="width:100%"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath2}" style="width:100%"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath3}" style="width:100%" /> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath4}" style="width:100%" /> 
+ 
+  <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
+  <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
+</div>
+</div>
+</div>
+ <script type="text/javascript" th:inline="javascript">
+   /*<![CDATA[*/
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+
+/*]]>*/
+</script>
+</body>  
+</html>  
