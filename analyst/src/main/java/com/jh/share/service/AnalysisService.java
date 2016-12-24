@@ -24,5 +24,5 @@ public interface AnalysisService {
 
     void evictCache();
 	Collection<Analysis> findAllByOrderByInsertDateDesc();
-
+	Long removeByFileId(String fileId);
 }

@@ -119,4 +119,12 @@ public class AnalysisServiceBean implements AnalysisService {
 		Collection<Analysis> analysiss = analysisRepository.findAllByOrderByInsertDateDesc();
 		return analysiss;
 	}
+
+	@Override
+	public Long removeByFileId(String fileId) {
+		Analysis analysis=analysisRepository.findByFileId(fileId);
+		analysisRepository.delete(analysis.getId());
+		return 1L;
+		
+	}
 }

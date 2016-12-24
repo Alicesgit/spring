@@ -35,12 +35,23 @@ a:hover, a:active {
 <div class="container">
 
 <h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
+<h2 class="w3-center">Manual Slideshow</h2>
+<div class="w3-content w3-display-container">
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath}"  style="width:100%;height:500px"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath1}" style="width:100%;height:500px"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath2}" style="width:100%;height:500px"/> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath3}" style="width:100%;height:500px" /> 
+  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath4}" style="width:100%;height:500px" /> 
+ 
+  <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
+  <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
+</div>
 <div class="table-responsive">   
 <table class="table table-hover">  
 
   <thead>
     <tr>
-     <td >Image</td>
+     
       <td th:text="#{msgs.headers.title_intValue}">Grade</td>
       <td th:text="#{msgs.headers.title_stringValue1}">ShareName</td>
       <td th:text="#{msgs.headers.title_stringValue2}">Analysis Source</td>
@@ -54,9 +65,6 @@ a:hover, a:active {
     </tr>
   </thead>
   <tbody>
-    
- <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="90" height="90"/>
-      </td>
       <td th:text="${analysis.intValue}"></td>
       <td th:text="${analysis.stringValue1}"></td>
       <td th:text="${analysis.stringValue2}"></td>
@@ -65,47 +73,14 @@ a:hover, a:active {
       <td th:text="${analysis.stringValue5}"></td>
       <td th:text="${analysis.stringValue6}"></td>
       <td th:text="${analysis.stringValue7}"></td>
-       <td th:text="${analysis.currentPrice}"></td>
-       <td th:text="${analysis.insertDate}"></td>
+      <td th:text="${analysis.currentPrice}"></td>
+      <td th:text="${analysis.insertDate}"></td>
 
    
   </tbody>
 </table>  
 
-<table class="table table-hover">  
 
-  <thead>
-    <tr>
-     <td >Image</td>
-       <td >Image1</td>
-        <td >Image2</td>
-          <td >Image3</td>
-            <td >Image4</td>
-    </tr>
-  </thead>
-  <tbody>
-    
- <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="90" height="90"/> </td>
-     
-<td>  <img th:src="@{/files/}+${analysis.imagePath1}"  width="120" height="120"/> </td>
-<td>  <img th:src="@{/files/}+${analysis.imagePath2}"  width="120" height="120"/> </td>
-<td>  <img th:src="@{/files/}+${analysis.imagePath3}"  width="120" height="120"/> </td>
-<td>  <img th:src="@{/files/}+${analysis.imagePath4}"  width="120" height="120"/> </td>
-   
-  </tbody>
-</table>  
-<h2 class="w3-center">Manual Slideshow</h2>
-
-<div class="w3-content w3-display-container">
-  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath}"  style="width:100%"/> 
-  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath1}" style="width:100%"/> 
-  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath2}" style="width:100%"/> 
-  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath3}" style="width:100%" /> 
-  <img class="mySlides" th:src="@{/files/}+${analysis.imagePath4}" style="width:100%" /> 
- 
-  <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
-  <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
-</div>
 </div>
 </div>
  <script type="text/javascript" th:inline="javascript">

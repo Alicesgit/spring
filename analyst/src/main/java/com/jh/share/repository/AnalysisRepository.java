@@ -15,5 +15,6 @@ public interface AnalysisRepository extends JpaRepository<Analysis, Long> {
 	Collection<Analysis> findAllByOrderByCurrentPriceAsc();
 	Collection<Analysis> findAllByOrderByInsertDateDesc();
 	List<Analysis> findAll();
+	
 
 }

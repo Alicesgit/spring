@@ -64,24 +64,23 @@ a:hover, a:active {
 	 <td th:text="#{msgs.headers.title_stringValue5}">ReleaseDate</td>
  <td >Real price</td>
  <td >InsertDate</td>
+  <td >Delete</td>
 						</tr>
   </thead>
   <tbody>
     <tr th:each="analysis : ${analysiss}">
-     <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="120" height="120"/>
-          <a th:href="@{/analysis/details(fid=${analysis.fileId})}">Details</a>
+     <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="120" height="120">
+          <a th:href="@{/analysis/details(fid=${analysis.fileId})}"></a></img>
          
   </td>
-      <td th:text="${analysis.intValue}"></td>
+      <td th:text="${analysis.intValue}"> <a th:href="@{/analysis/details(fid=${analysis.fileId})}"></a></td>
       <td th:text="${analysis.stringValue1}"></td>
       <td th:text="${analysis.stringValue2}"></td>
       <td th:text="${analysis.stringValue3}"></td>
-  
       <td th:text="${analysis.stringValue5}"></td>
-        <td th:text="${analysis.currentPrice}"></td>
-          <td th:text="${analysis.insertDate}"></td>
-    
-      
+      <td th:text="${analysis.currentPrice}"></td>
+      <td th:text="${analysis.insertDate}"></td>
+    <td>  <a th:href="@{/analysis/delete(fid=${analysis.fileId})}">Delete</a> </td>
     </tr>
   </tbody>
 </table>  
