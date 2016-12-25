@@ -81,6 +81,7 @@ a:hover, a:active {
       <td th:text="${analysis.currentPrice}"></td>
       <td th:text="${analysis.insertDate}"></td>
     <td>  <a th:href="@{/analysis/delete(fid=${analysis.fileId})}">Delete</a> </td>
+      <td>  <a th:href="@{/analysis/update(fid=${analysis.fileId})}">Update</a> </td>
     </tr>
   </tbody>
 </table>  
