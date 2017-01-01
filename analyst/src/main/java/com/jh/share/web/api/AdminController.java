@@ -45,7 +45,7 @@ public class AdminController {
 	    }
 	 
 	 @RequestMapping(value = "/analyst/update",method = RequestMethod.POST)
-	    public String update(@ModelAttribute Analysis analysis,HttpServletRequest request) throws IOException {
+	    public String update(@ModelAttribute Analysis analysis,@RequestParam(value = "image", required = false) MultipartFile[] files,HttpServletRequest request) throws IOException {
 		 String fid=(String)request.getSession().getAttribute("fileId");
 		
 	     System.out.println("analysi getCurrentPrice: "+analysis.getCurrentPrice());
@@ -63,7 +63,7 @@ public class AdminController {
 	     newanalysis.setIntValue(analysis.getIntValue());
 	     newanalysis.setCurrentPrice(analysis.getCurrentPrice());
 	    
-	     /*  // System.out.println("original file name is: "+filename);
+	       // System.out.println("original file name is: "+filename);
 			List<String> imageNames=new ArrayList<String>() ;
 			String message = "";
 			for (int i = 0; i < files.length; i++) {
@@ -71,7 +71,7 @@ public class AdminController {
 				if (!file.isEmpty()) {
 						try {
 							System.out.println("file is not empty");
-							String filename = analysis.getFileId() + file.getOriginalFilename();
+							String filename = fid + file.getOriginalFilename();
 							validateImage(file);
 							saveImage(filename, file);
 							imageNames.add(filename);
@@ -83,22 +83,26 @@ public class AdminController {
 					}
 			}
 			
-			
+			System.out.println("compare name1"+imageNames.get(0));
+			System.out.println("compare name2"+analysis.getImagePath());
 			analysis.setImagePath(imageNames.get(0));
 			analysis.setImagePath1(imageNames.get(1));
 			analysis.setImagePath2(imageNames.get(2));
 			analysis.setImagePath3(imageNames.get(3));
 			analysis.setImagePath4(imageNames.get(4));
 	     
+			System.out.println("compare name2"+analysis.getImagePath());
 	     
 	     
-	     
-	     newanalysis.setImagePath(analysis.getImagePath());
-	     newanalysis.setImagePath(analysis.getImagePath1());
-	     newanalysis.setImagePath(analysis.getImagePath2());
-	     newanalysis.setImagePath(analysis.getImagePath3());
-	     newanalysis.setImagePath(analysis.getImagePath4());*/
-	     
+	     newanalysis.setImagePath(imageNames.get(0));
+	     newanalysis.setImagePath1(imageNames.get(1));
+	     newanalysis.setImagePath2(imageNames.get(2));
+	     newanalysis.setImagePath3(imageNames.get(3));
+	     newanalysis.setImagePath4(imageNames.get(4));
+	 	System.out.println("compare name3"+newanalysis.getImagePath());
+	 	System.out.println("compare name4"+newanalysis.getImagePath1());
+	 	System.out.println("compare name5"+newanalysis.getImagePath2());
+	 	System.out.println("compare name6"+newanalysis.getImagePath3());
 	     analysisService.update(newanalysis);
 	    		 
 	     return "/index";
