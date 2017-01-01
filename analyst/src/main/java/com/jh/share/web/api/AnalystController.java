@@ -43,7 +43,14 @@ public class AnalystController {
 
 	@Autowired
 	private AnalysisService analysisService;
-
+    
+	@RequestMapping(value = { "/analyst" }, method = RequestMethod.GET)
+	public String firstPage(ModelMap map) {
+		
+		
+		return "welcome";
+	}
+	
 	@RequestMapping(value = { "/analyst/overview/index" }, method = RequestMethod.GET)
 	public String index(ModelMap map) {
 		Collection<Analysis> analysiss = analysisService.findAll();
@@ -159,12 +166,19 @@ public class AnalystController {
 					
 				}
 		}
+		int listSize=imageNames.size();
+	     if(imageNames.get(0)!=null&&!imageNames.get(0).equals(null)){
+	     analysis.setImagePath(imageNames.get(0));}
+	     
+	     if(listSize>1&&imageNames.get(1)!=null&&!imageNames.get(1).equals(null)){
+	     analysis.setImagePath1(imageNames.get(1));}
+	     if(listSize>2&&imageNames.get(2)!=null&&!imageNames.get(2).equals(null)){
+	    analysis.setImagePath2(imageNames.get(2));}
+	     if(listSize>3&&imageNames.get(3)!=null&&!imageNames.get(3).equals(null)){
+	     analysis.setImagePath3(imageNames.get(3));}
+	     if(listSize>4&&imageNames.get(4)!=null&&!imageNames.get(4).equals(null)){
+	    analysis.setImagePath4(imageNames.get(4));}
 		
-		analysis.setImagePath(imageNames.get(0));
-		analysis.setImagePath1(imageNames.get(1));
-		analysis.setImagePath2(imageNames.get(2));
-		analysis.setImagePath3(imageNames.get(3));
-		analysis.setImagePath4(imageNames.get(4));
 		// if(fileID!=null&&!fileID.equals("")){
 		// analysis.setFileId(fileid.toString());
 	
