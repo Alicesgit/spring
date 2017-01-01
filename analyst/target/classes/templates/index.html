@@ -69,8 +69,9 @@ a:hover, a:active {
   </thead>
   <tbody>
     <tr th:each="analysis : ${analysiss}">
-     <td>  <img th:src="@{/files/}+${analysis.imagePath}"  width="120" height="120">
-          <a th:href="@{/analysis/details(fid=${analysis.fileId})}"></a></img>
+    <td> <a th:href="@{/analysis/details(fid=${analysis.fileId})}">  
+    <img th:src="@{/files/}+${analysis.imagePath}"  th:href="@{/analysis/details(fid=${analysis.fileId})}" width="120" height="120">  
+    </img> </a>
          
   </td>
       <td th:text="${analysis.intValue}"> <a th:href="@{/analysis/details(fid=${analysis.fileId})}"></a></td>
