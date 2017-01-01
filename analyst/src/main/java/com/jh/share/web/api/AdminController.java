@@ -83,26 +83,18 @@ public class AdminController {
 					}
 			}
 			
-			System.out.println("compare name1"+imageNames.get(0));
-			System.out.println("compare name2"+analysis.getImagePath());
-			analysis.setImagePath(imageNames.get(0));
-			analysis.setImagePath1(imageNames.get(1));
-			analysis.setImagePath2(imageNames.get(2));
-			analysis.setImagePath3(imageNames.get(3));
-			analysis.setImagePath4(imageNames.get(4));
+			int listSize=imageNames.size();
+	     if(imageNames.get(0)!=null&&!imageNames.get(0).equals(null)){
+	     newanalysis.setImagePath(imageNames.get(0));}
 	     
-			System.out.println("compare name2"+analysis.getImagePath());
-	     
-	     
-	     newanalysis.setImagePath(imageNames.get(0));
-	     newanalysis.setImagePath1(imageNames.get(1));
-	     newanalysis.setImagePath2(imageNames.get(2));
-	     newanalysis.setImagePath3(imageNames.get(3));
-	     newanalysis.setImagePath4(imageNames.get(4));
-	 	System.out.println("compare name3"+newanalysis.getImagePath());
-	 	System.out.println("compare name4"+newanalysis.getImagePath1());
-	 	System.out.println("compare name5"+newanalysis.getImagePath2());
-	 	System.out.println("compare name6"+newanalysis.getImagePath3());
+	     if(listSize>1&&imageNames.get(1)!=null&&!imageNames.get(1).equals(null)){
+	     newanalysis.setImagePath1(imageNames.get(1));}
+	     if(listSize>2&&imageNames.get(2)!=null&&!imageNames.get(2).equals(null)){
+	     newanalysis.setImagePath2(imageNames.get(2));}
+	     if(listSize>3&&imageNames.get(3)!=null&&!imageNames.get(3).equals(null)){
+	     newanalysis.setImagePath3(imageNames.get(3));}
+	     if(listSize>4&&imageNames.get(4)!=null&&!imageNames.get(4).equals(null)){
+	     newanalysis.setImagePath4(imageNames.get(4));}
 	     analysisService.update(newanalysis);
 	    		 
 	     return "/index";
