@@ -12,25 +12,27 @@
 <body>  
 
 
-<div class="container">
+<div class="container" >
 
+
+
+
+<div class="row" style="margin:5px">
 <h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
-<div id="header-login" style="padding-top:2px;border-style: solid solid solid solid;" class="row">
-<div>
+<div class="row" style="margin-bottom:10px;">
+<div id="header-login" style="float:left;padding-top:2px;border-style: transparent solid transparent transparent;" class="row">
+<div class ="row">
 <a th:href="@{/login}"> Login</a>
 <a th:href="@{/registration}"> Registration</a>
 <a th:href="@{/addAdvertisement}"> Add advertisement</a>
 </div>
 
 </div>
-<div id="header-sorting" style="padding-top:2px;border-style: solid solid solid solid;" class="row">
+<div class ="row" id="header-sorting" style="float:right;padding-top:2px;border-style: transparent solid transparent transparent;" >
 <a th:href="@{/sortingByPrice}"> cheapest</a>
 <a th:href="@{/sortingByDate}"> newest</a>
 </div>
-
-
-
-<div class="row">
+</div>
 <div class="table-responsive">   
 <table class="table table-hover">  
 
