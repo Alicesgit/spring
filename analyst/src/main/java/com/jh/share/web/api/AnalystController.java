@@ -131,6 +131,11 @@ public class AnalystController {
 	public String addObjectPost(@ModelAttribute Analysis analysis,
 			@RequestParam(value = "image", required = false) MultipartFile[] files, HttpServletRequest request)
 			throws IOException {
+		
+		System.out.println("request content type: "+request.getContentType());
+		System.out.println("request content type: "+request.getContentLength());
+		
+		System.out.println("request content type: "+request.getContentType());
 		// UUID fileid=UUID.randomUUID();
 		// System.out.println("image path"+image.getOriginalFilename());
 		// String filename=fileID+image.getOriginalFilename();
@@ -204,6 +209,8 @@ public class AnalystController {
 	}
 
 	private void validateImage(MultipartFile image) {
+		System.out.println("image contentType"+image.getContentType());
+		System.out.println("image size"+image.getSize());
 		if (!image.getContentType().equals("image/jpeg")) {
 			throw new RuntimeException("Only JPG images are accepted");
 		}
