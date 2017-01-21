@@ -35,7 +35,7 @@
 
 						<tr th:each="analysis : ${analysiss}" style="border-style:solid transparent transparent transparent">
 						    <tr style="border-style:transparent">
-							<td rowspan="3" ><a
+							<td rowspan="3" style="width:20%" ><a
 								th:href="@{/analysis/details(fid=${analysis.fileId})}"> <img
 									th:src="@{/files/}+${analysis.imagePath}"
 									th:href="@{/analysis/details(fid=${analysis.fileId})}"
