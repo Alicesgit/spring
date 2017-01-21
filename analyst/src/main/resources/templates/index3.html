@@ -1,0 +1,69 @@
+<html>  
+<head>  
+    <title>Analyser</title>
+      <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+   <script src="/static/js/jquery-1.12.2.min.js" />
+<script src="/static/js/bootstrap.js" />
+<link rel="stylesheet"
+	href="/static/css/bootstrap.min.css" />
+</head>
+<body>  
+<div class="container" >
+
+<div class="row" style="margin:5px">
+<h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
+<div class="row" style="margin-bottom:10px;">
+<div id="header-login" style="float:left;padding-top:2px;border-style: transparent solid transparent transparent;" class="row">
+<div class ="row">
+<a th:href="@{/login}"> Login</a>
+<a th:href="@{/registration}"> Registration</a>
+<a th:href="@{/addAdvertisement}"> Add advertisement</a>
+</div>
+
+</div>
+<div class ="row" id="header-sorting" style="float:right;padding-top:2px;border-style: transparent solid transparent transparent;" >
+<a th:href="@{/sortingByPrice}"> cheapest</a>
+<a th:href="@{/sortingByDate}"> newest</a>
+</div>
+</div>
+<div class="table-responsive">   
+<table class="table table-hover">  
+
+  <thead>
+    <tr>
+     <td >Image</td>
+      <td th:text="#{msgs.headers.title_intValue}">Grade</td>
+      <td th:text="#{msgs.headers.title_stringValue1}">ShareName</td>
+      <td th:text="#{msgs.headers.title_stringValue2}">Analysis Source</td>
+      <td th:text="#{msgs.headers.title_stringValue3}">Current Price</td>
+	 <td th:text="#{msgs.headers.title_stringValue5}">ReleaseDate</td>
+ <td >Real price</td>
+ <td >InsertDate</td>
+  <td >Delete</td>
+						</tr>
+  </thead>
+  <tbody>
+    <tr th:each="analysis : ${analysiss}">
+    <td> <a th:href="@{/analysis/details(fid=${analysis.fileId})}">  
+    <img th:src="@{/files/}+${analysis.imagePath}"  th:href="@{/analysis/details(fid=${analysis.fileId})}" width="120" height="120">  
+    </img> </a>
+         
+  </td>
+      <td th:text="${analysis.intValue}"> <a th:href="@{/analysis/details(fid=${analysis.fileId})}"></a></td>
+      <td th:text="${analysis.stringValue1}"></td>
+      <td th:text="${analysis.stringValue2}"></td>
+      <td th:text="${analysis.stringValue3}"></td>
+      <td th:text="${analysis.stringValue5}"></td>
+      <td th:text="${analysis.currentPrice}"></td>
+      <td th:text="${analysis.insertDate}"></td>
+    <td>  <a th:href="@{/analysis/delete(fid=${analysis.fileId})}">Delete</a> </td>
+      <td>  <a th:href="@{/analysis/update(fid=${analysis.fileId})}">Update</a> </td>
+    </tr>
+  </tbody>
+</table>  
+</div>
+</div>
+</div>
+</body>  
+</html>  

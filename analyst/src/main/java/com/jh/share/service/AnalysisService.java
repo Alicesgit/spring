@@ -8,21 +8,27 @@ import org.springframework.data.domain.Pageable;
 import com.jh.share.model.Analysis;
 
 public interface AnalysisService {
-    Collection<Analysis> findAll();
-    Collection<Analysis> findAllByOrderByCurrentPriceAsc();
 
-    Page<Analysis> findAll(Pageable pageable);
+	Collection<Analysis> findAll();
 
-    Analysis findOne(Long id);
-    Analysis fineByFileId(String fileId);
+	Analysis findOne(Long id);
 
-    Analysis create(Analysis analysis);
+	Analysis create(Analysis analysis);
 
-    Analysis update(Analysis analysis);
+	Analysis update(Analysis analysis);
 
-    void delete(Long id);
+	void delete(Long id);
 
-    void evictCache();
+	void evictCache();
+
+	Page<Analysis> findAll(Pageable pageable);
+
+	Analysis fineByFileId(String fileid);
+
+	Collection<Analysis> findAllByOrderByCurrentPriceAsc();
+
 	Collection<Analysis> findAllByOrderByInsertDateDesc();
+
 	Long removeByFileId(String fileId);
+
 }

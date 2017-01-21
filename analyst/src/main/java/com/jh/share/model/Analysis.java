@@ -10,13 +10,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
-
 @Entity
 public class Analysis {
 	@Id
 	@GeneratedValue
-	@Column(name = "analysis_id")
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name="file_id")
@@ -28,8 +26,7 @@ public class Analysis {
 	@Temporal(TemporalType.TIMESTAMP)
     private java.util.Date insertDate;
 	
-	
-	
+
 	private int intValue;
 
 	private String stringValue1;

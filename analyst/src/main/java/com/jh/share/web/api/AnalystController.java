@@ -35,6 +35,8 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import com.jh.share.model.Analysis;
 import com.jh.share.service.AnalysisService;
 
+
+
 @Controller
 public class AnalystController {
 
@@ -97,7 +99,8 @@ public class AnalystController {
 		map.addAttribute("currentIndex", current);
 		map.addAttribute("analysiss", resultPage);
 		// return模板文件的名称，对应src/main/resources/templates/index.html
-		return "indexByPage";
+		//return "indexByPage";
+		return "index2";
 	}
 
 	private int[] getRange(int begin, int end) {
@@ -141,7 +144,7 @@ public class AnalystController {
 		// String filename=fileID+image.getOriginalFilename();
 		String fileID = UUID.randomUUID().toString();
 		System.out.println("get method: " + fileID);
-		System.out.println("get id from post method: "+request.getSession().getAttribute("analysisid"));
+		//System.out.println("get id from post method: "+request.getSession().getAttribute("analysisid"));
 		analysis.setFileId(fileID);
 		//analysis.setId((Long)(request.getSession().getAttribute("analysisid")));
 		
