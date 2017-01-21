@@ -10,29 +10,29 @@
 <body>
 	<div class="container">
 
-		<div class="row" style="margin: 5px">
-			<div class="row" style="margin-bottom: 10px;">
-				<div id="header-login"
-					style="float: left; padding-top: 2px; border-style: transparent solid transparent transparent;"
-					class="row">
-					<div class="row">
-					    <td th:text="#{msgs.headers.title_0}">Analyser</td>
-						<a th:href="@{/login}"> Login</a> 
-						<a th:href="@{/registration}">Registration</a> 
-						<a th:href="@{/addAdvertisement}"> Add advertisement</a>
-					</div>
+		<div class="row">
+			<div class="row">
+				<div class="row" style="margin-left:2px;background-color:#C0C0C0 ;height:80px;border-style: transparent solid transparent transparent;">
+					
+					    <div class="row" style="margin-left:2px;padding-left:20px;">
+					      <div style="margin-left:2px;font-size:20px bold;color:black" th:text="#{msgs.headers.title_0}">Analyser</div>
+						 
+                              <a th:href="@{/login}"> Login</a> 
+					          <a th:href="@{/registration}">Registration</a> 
+						      <a th:href="@{/addAdvertisement}"> Add advertisement</a>
+						</div>
+				
 
 				</div>
-				<div class="row" id="header-sorting"
-					style="float: right; padding-top: 2px; border-style: transparent solid transparent transparent;">
-					<a th:href="@{/sortingByPrice}"> cheapest</a> 
-					<a th:href="@{/sortingByDate}"> newest</a>
+				<div class="row"
+					style="height:50px;float:right;padding-top:20px; border-style: transparent solid transparent transparent;">
+					<a th:href="@{/sortingByPrice}"> <button>cheapest</button></a> 
+					<a th:href="@{/sortingByDate}"> <button>newest</button></a>
 				</div>
 			</div>
-			<div class="table-responsive">
+			<div class="row">
+			   <div class="table-responsive">
 				<table class="table">
-
-
 						<tr th:each="analysis : ${analysiss}" style="border-style:solid transparent transparent transparent">
 						    <tr style="border-style:transparent">
 							<td rowspan="3" style="width:20%" ><a
@@ -47,6 +47,7 @@
 							<tr style="border-style:hidden"><td th:text="${analysis.insertDate}"></td></tr>
 						</tr>
 				</table>
+			</div>
 			</div>
 		</div>
 	</div>
