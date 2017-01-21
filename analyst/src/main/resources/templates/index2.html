@@ -33,7 +33,8 @@
 				<table class="table table-hover">
 
 
-						<tr th:each="analysis : ${analysiss}">
+						<tr th:each="analysis : ${analysiss}" style="border-style:solid transparent transparent transparent">
+						    <tr style="border-style:transparent">
 							<td rowspan="3" ><a
 								th:href="@{/analysis/details(fid=${analysis.fileId})}"> <img
 									th:src="@{/files/}+${analysis.imagePath}"
@@ -42,10 +43,9 @@
 							</a>
 							</td>
 							<td th:text="${analysis.stringValue1}"></td></tr>
-							<tr><td th:text="${analysis.currentPrice}"></td></tr>
-							<tr><td th:text="${analysis.insertDate}"></td></tr>
+							<tr style="border-style:hidden"><td th:text="${analysis.currentPrice}"></td></tr>
+							<tr style="border-style:hidden"><td th:text="${analysis.insertDate}"></td></tr>
 						</tr>
-
 				</table>
 			</div>
 		</div>
