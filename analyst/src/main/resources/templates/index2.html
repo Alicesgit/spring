@@ -3,34 +3,43 @@
 <title>Analyser</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <script src="/static/js/jquery-1.12.2.min.js" />
 <script src="/static/js/bootstrap.js" />
 <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
 </head>
+
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Analyser</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a th:href="@{/addAdvertisement}">Add advertisement</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{/registration}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
 	<div class="container">
-
-		<div class="row">
-			<div class="row">
-				<div class="row" style="margin-left:2px;background-color:#C0C0C0 ;height:80px;border-style: transparent solid transparent transparent;">
-					
-					    <div class="row" style="margin-left:2px;padding-left:20px;">
-					      <div style="margin-left:2px;font-size:20px bold;color:black" th:text="#{msgs.headers.title_0}">Analyser</div>
-						 
-                              <a th:href="@{/login}"> Login</a> 
-					          <a th:href="@{/registration}">Registration</a> 
-						      <a th:href="@{/addAdvertisement}"> Add advertisement</a>
-						</div>
-				
-
-				</div>
-				<div class="row"
-					style="height:50px;float:right;padding-top:20px; border-style: transparent solid transparent transparent;">
+				<div class="row" >
+					<div  style="margin:10px 2px 10px 2px">
 					<a th:href="@{/sortingByPrice}"> <button>cheapest</button></a> 
 					<a th:href="@{/sortingByDate}"> <button>newest</button></a>
-				</div>
-			</div>
-			<div class="row">
+					</div>
+			    </div>
+			<div class="row" >
 			   <div class="table-responsive">
 				<table class="table">
 						<tr th:each="analysis : ${analysiss}" style="border-style:solid transparent transparent transparent">
@@ -49,7 +58,8 @@
 				</table>
 			</div>
 			</div>
-		</div>
+		
+	
 	</div>
 </body>
 </html>
