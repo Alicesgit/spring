@@ -2,7 +2,11 @@ package com.jh.share.web.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -133,7 +137,7 @@ public class AnalystController {
 	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
 	public String addObjectPost(@ModelAttribute Analysis analysis,
 			@RequestParam(value = "image", required = false) MultipartFile[] files, HttpServletRequest request)
-			throws IOException {
+			throws IOException, ParseException {
 		
 		System.out.println("request content type: "+request.getContentType());
 		System.out.println("request content type: "+request.getContentLength());
@@ -149,12 +153,20 @@ public class AnalystController {
 		//analysis.setId((Long)(request.getSession().getAttribute("analysisid")));
 		
 		System.out.println("post object: "+analysis.getId());
-		java.util.Date date = new Date();
+		DateFormat df2 = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		
+		Calendar calendar=Calendar.getInstance();
+		String formattedDate = df2.format(calendar.getTime());
+		Date result=df2.parse(formattedDate);
+		
+				
+		
+		
 
 		System.out.println("analysis.getId: " + analysis.getId());
 		System.out.println("analysis.getCurrentPrice(): " + analysis.getCurrentPrice());
 		System.out.println("analysis.analysis.getStringValue3(): " + analysis.getStringValue3());
-		analysis.setInsertDate(date);
+		analysis.setInsertDate(result);
 		// System.out.println("original file name is: "+filename);
 		List<String> imageNames=new ArrayList<String>() ;
 		String message = "";

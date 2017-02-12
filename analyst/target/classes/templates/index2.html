@@ -13,20 +13,23 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Analyser</a>
+      <a class="navbar-brand">Analyser</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a th:href="@{/}">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+          <li><a  th:href="@{/}">Page 1-1</a></li>
+          <li><a  th:href="@{/}">Page 1-2</a></li>
+          <li><a  th:href="@{/}">Page 1-3</a></li>
         </ul>
       </li>
-      <li><a th:href="@{/addAdvertisement}">Add advertisement</a></li>
+     
     </ul>
     <ul class="nav navbar-nav navbar-right">
+     <li>
+      <a th:href="@{/addAdvertisement}"><button type="button" class="btn btn-primary">Add advertisement </button></a>
+   </li>
       <li><a th:href="@{/registration}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
@@ -34,9 +37,9 @@
 </nav>
 	<div class="container">
 				<div class="row" >
-					<div  style="margin:10px 2px 10px 2px">
-					<a th:href="@{/sortingByPrice}"> <button>cheapest</button></a> 
-					<a th:href="@{/sortingByDate}"> <button>newest</button></a>
+					<div  style="float:right;margin:10px 2px 10px 2px">
+					<a th:href="@{/sortingByPrice}"> <button>Cheapest</button></a> 
+					<a th:href="@{/sortingByDate}"> <button>Newest</button></a>
 					</div>
 			    </div>
 			<div class="row" >
@@ -44,16 +47,16 @@
 				<table class="table">
 						<tr th:each="analysis : ${analysiss}" style="border-style:solid transparent transparent transparent">
 						    <tr style="border-style:transparent">
-							<td rowspan="3" style="width:20%" ><a
+							<td rowspan="3" style="width:20%;" align="center" ><a
 								th:href="@{/analysis/details(fid=${analysis.fileId})}"> <img
 									th:src="@{/files/}+${analysis.imagePath}"
 									th:href="@{/analysis/details(fid=${analysis.fileId})}"
-									width="120" height="120"> </img>
+									class="thumbnail" height="169" />
 							</a>
 							</td>
-							<td th:text="${analysis.stringValue1}"></td></tr>
+							<td style="font-weight:bold" th:text="${analysis.stringValue1}"></td></tr>
 							<tr style="border-style:hidden"><td th:text="${analysis.currentPrice}"></td></tr>
-							<tr style="border-style:hidden"><td th:text="${analysis.insertDate}"></td></tr>
+							<tr align="right" style="border-style:hidden;color:#666;"><td th:text="${#calendars.format(analysis.insertDate,'HH:mm  yyyy-MM-dd')}"></td></tr>
 						</tr>
 				</table>
 			</div>
