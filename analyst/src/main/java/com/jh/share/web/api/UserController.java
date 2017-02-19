@@ -13,6 +13,7 @@ import com.jh.share.service.SecurityService;
 import com.jh.share.service.UserService;
 import com.jh.share.validation.UserValidator;
 
+
 @Controller
 public class UserController {
     @Autowired

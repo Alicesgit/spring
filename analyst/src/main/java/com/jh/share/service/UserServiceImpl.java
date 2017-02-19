@@ -9,6 +9,7 @@ import com.jh.share.repository.RoleRepository;
 import com.jh.share.repository.UserRepository;
 
 import java.util.HashSet;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,6 +23,8 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public void save(User user) {
+    	System.out.println("user: "+user.getUsername()+" "+user.getPassword());
+    	
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
