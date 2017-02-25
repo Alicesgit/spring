@@ -30,16 +30,20 @@ public class SecurityServiceImpl implements SecurityService{
         return null;
     }
 
-    @Override
+   /* @Override
     public void autologin(String username, String password) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+    	 if(userDetailsService.loadUserByUsername(username)!=null){
+    		 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+    	        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+    	        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+    	        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
+    	            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+    	            logger.debug(String.format("Auto login %s successfully!", username));
+    	        }
+    	        
+    	 }
 
-        if (usernamePasswordAuthenticationToken.isAuthenticated()) {
-            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.debug(String.format("Auto login %s successfully!", username));
-        }
-    }
+        
+    }*/
 }

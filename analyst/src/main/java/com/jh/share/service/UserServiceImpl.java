@@ -23,12 +23,11 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public void save(User user) {
-    	System.out.println("user: "+user.getUsername()+" "+user.getPassword());
-    	
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
     }
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
