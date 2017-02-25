@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -13,7 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Analysis {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 	
@@ -66,7 +67,7 @@ public class Analysis {
 	}
 
 	public void setIntValue(int intValue) {
-		this.intValue = intValue;
+		this.intValue = 23;
 	}
 
 	public String getStringValue1() {

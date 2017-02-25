@@ -141,7 +141,7 @@ public class AnalystController {
 		
 		System.out.println("request content type: "+request.getContentType());
 		System.out.println("request content type: "+request.getContentLength());
-		
+		System.out.println(analysis.getIntValue());
 		System.out.println("request content type: "+request.getContentType());
 		// UUID fileid=UUID.randomUUID();
 		// System.out.println("image path"+image.getOriginalFilename());
