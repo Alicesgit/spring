@@ -54,7 +54,7 @@ public class AnalystController {
 	public String firstPage(ModelMap map) {
 		
 		
-		return "welcome";
+		return "index2";
 	}
 	
 	@RequestMapping(value = { "/analyst/overview/index" }, method = RequestMethod.GET)
@@ -72,7 +72,7 @@ public class AnalystController {
 
 		map.addAttribute("analysiss", analysiss);
 		// return模板文件的名称，对应src/main/resources/templates/index.html
-		return "index";
+		return "index2";
 
 	}
 	
@@ -82,7 +82,7 @@ public class AnalystController {
 
 		map.addAttribute("analysiss", analysiss);
 		// return模板文件的名称，对应src/main/resources/templates/index.html
-		return "index";
+		return "index2";
 
 	}
 
