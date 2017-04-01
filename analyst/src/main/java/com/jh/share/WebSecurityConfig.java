@@ -30,11 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	http.authorizeRequests().antMatchers("/files/").permitAll() 
     	.antMatchers("/analyst/overview/index").permitAll() 
     	.antMatchers("/analysis/details").permitAll() 
+    	.antMatchers("/sortingByDate").permitAll()
+    	.antMatchers("/sortingByPrice").permitAll()
                 .antMatchers("/registration").permitAll() 
                 .antMatchers("/resources/static/").permitAll() 
               .anyRequest().authenticated()
                     .and()
-           
                 .formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/addAdvertisement")

@@ -37,12 +37,15 @@
 
 <h2 th:text="#{msgs.headers.title_0}">Analyser</h2>
 <div class="w3-content w3-display-container" align="center">
+ <div th:if="${analysis.imagePath}">
   <img class="mySlides" th:src="@{/files/}+${analysis.imagePath}"  style="max-height:500px;max-width:500px;"/> 
+ </div> 
+  <div th:if="${analysis.imagePath1}">
   <img class="mySlides" th:src="@{/files/}+${analysis.imagePath1}" style="max-height:500px;max-width:500px;"/> 
   <img class="mySlides" th:src="@{/files/}+${analysis.imagePath2}" style="max-height:500px;max-width:500px;"/> 
   <img class="mySlides" th:src="@{/files/}+${analysis.imagePath3}" style="max-height:500px;max-width:500px;" /> 
   <img class="mySlides" th:src="@{/files/}+${analysis.imagePath4}" style="max-height:500px;max-width:500px;" /> 
- 
+  </div>
   <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
   <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
 </div>
