@@ -32,10 +32,12 @@
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a th:href="@{/login}"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a th:href="@{/logout}"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container" style="background-color:#fafafa">
+	<div class="container" style="background-color: #fafafa">
 		<div class="w3-content w3-display-container" align="center">
 			<div th:if="${analysis.imagePath}">
 				<img class="mySlides" th:src="@{/files/}+${analysis.imagePath}"
@@ -62,48 +64,56 @@
 		<a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
 	</div>
 	<div class="table-responsive">
-		<table class="table table-hover"  style=" border-collapse:collapse;border:1px transparent transparent transparent transparent; width:60%">
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_intValue}" style=" border:none;">>Grade:</th>
-				<td th:text="${analysis.intValue}" style=" border:none;"></td>
+		<table class="table table-hover"
+			style="border-collapse: collapse; border: 1px transparent transparent transparent transparent; width: 60%">
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_intValue}" style="border: none;">>Grade:</th>
+				<td th:text="${analysis.intValue}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue1}" style=" border:none;">ShareName</th>
-				<td th:text="${analysis.stringValue1}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue1}"
+					style="border: none;">ShareName:</th>
+				<td th:text="${analysis.stringValue1}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue2}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue2}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue2}"
+					style="border: none;">Analysis Source:</th>
+				<td th:text="${analysis.stringValue2}" style="border: none;"></td>
 			</tr>
-			
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue3}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue3}" style=" border:none;"></td>
+
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue3}"
+					style="border: none;"></th>
+				<td th:text="${analysis.stringValue3}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue4}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue4}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue4}"
+					style="border: none;"></th>
+				<td th:text="${analysis.stringValue4}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue5}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue5}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue5}"
+					style="border: none;"></th>
+				<td th:text="${analysis.stringValue5}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue6}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue6}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue6}"
+					style="border: none;"></th>
+				<td th:text="${analysis.stringValue6}" style="border: none;"></td>
 			</tr>
-			<tr style=" border:none;">
-				<th th:text="#{msgs.headers.title_stringValue7}" style=" border:none;">Analysis Source</th>
-				<td th:text="${analysis.stringValue7}" style=" border:none;"></td>
+			<tr style="border: none;">
+				<th th:text="#{msgs.headers.title_stringValue7}"
+					style="border: none;"></th>
+				<td th:text="${analysis.stringValue7}" style="border: none;"></td>
 			</tr>
-			
-			<tr style=" border:none;">
-				<th style=" border:none;">Real Price</th>
-				<td th:text="${analysis.currentPrice}" style=" border:none;"></td>
+
+			<tr style="border: none;">
+				<th style="border: none;">Real Price</th>
+				<td th:text="${analysis.currentPrice}" style="border: none;"></td>
 			</tr>
-			<tr >
-				<th style=" border:none;">Updated Date</th>
-				<td th:text="${analysis.insertDate}" style=" border:none;"></td>
+			<tr>
+				<th style="border: none;">Updated Date</th>
+				<td th:text="${analysis.insertDate}" style="border: none;"></td>
 			</tr>
 		</table>
 	</div>

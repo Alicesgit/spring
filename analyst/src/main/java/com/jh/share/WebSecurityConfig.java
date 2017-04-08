@@ -41,14 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/addAdvertisement")
                     .permitAll()
                     .and()
-                    .logout()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/")
-                    .and()
+                   
                     .exceptionHandling()
                     .and()
                     .csrf()//Disabled CSRF protection
                     .disable();
+    	
+    	http.logout().logoutUrl("/logout").logoutSuccessUrl("/analyst/overview/index");
     }
 
     @Autowired
