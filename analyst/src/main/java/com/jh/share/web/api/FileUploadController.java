@@ -51,9 +51,7 @@ public class FileUploadController {
 
 	@RequestMapping("/file")
 	public String file() {
-
 		return "/file";
-
 	}
 
 	/**

@@ -136,7 +136,7 @@ public class AnalystController {
 
 	@RequestMapping(value = "/analyst/addObject", method = RequestMethod.POST)
 	public String addObjectPost(@ModelAttribute Analysis analysis,
-			@RequestParam(value = "image", required = false) MultipartFile[] files, HttpServletRequest request)
+			@RequestParam(value = "image", required = false) MultipartFile[] files, HttpServletRequest request,Model model)
 			throws IOException, ParseException {
 		
 		System.out.println("request content type: "+request.getContentType());
@@ -186,7 +186,9 @@ public class AnalystController {
 					
 				}
 		}
+		
 		int listSize=imageNames.size();
+		model.addAttribute("listSize",listSize>1?true:false);
 	     if(imageNames.get(0)!=null&&!imageNames.get(0).equals(null)){
 	     analysis.setImagePath(imageNames.get(0));}
 	     

@@ -26,6 +26,7 @@ public class ViewDetailsController {
 	    	
 	    	model.addAttribute("analysis", currentAnalysis);
 	    	
+	    	
 	        // return模板文件的名称，对应src/main/resources/templates/login.html
 	        
 	        return "/analystDetails2";
